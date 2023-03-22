@@ -1,0 +1,13 @@
+[Unit]
+Description=Update system
+After=rc-local.service network-online.target
+Before=getty.target
+Before=systemd-user-sessions.service
+
+[Service]
+StandardOutput=tty
+Type=oneshot
+ExecStart=/usr/local/bin/update.sh
+
+[Install]
+WantedBy=multi-user.target

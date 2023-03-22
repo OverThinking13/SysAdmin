@@ -1,0 +1,6 @@
+- name: Update Kaspersky Endpoint Security
+  hosts: all
+  become: yes
+  tasks:
+    - name: Updating
+      shell: kesl-control --start-task Update --progress

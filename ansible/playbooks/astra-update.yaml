@@ -1,0 +1,6 @@
+- name: Update AstraLinux
+  hosts: all
+  become: yes
+  tasks:
+    - name: Updating
+      shell: astra-update -A -r -T

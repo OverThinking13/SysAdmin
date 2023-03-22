@@ -1,0 +1,8 @@
+[servers]
+Name ansible_host=dnsname
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_port=22
+ansible_user=someuser

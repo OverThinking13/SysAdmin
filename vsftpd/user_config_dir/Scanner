@@ -1,0 +1,5 @@
+local_root=/srv/samba/scan/
+
+write_enable=YES
+
+local_umask=007

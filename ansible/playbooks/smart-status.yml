@@ -1,0 +1,17 @@
+- name: S.M.A.R.T.
+  hosts: all
+  become: yes
+  vars:
+    wait_seconds: 120
+  tasks:
+    - name: Short test
+      shell: smartctl -t short /dev/sda
+
+    - name: pause for {{ wait_seconds | int }} second(s)
+      ansible.builtin.pause:
+        seconds: "{{ wait_seconds | int }}"
+
+    - name: Result
+      shell: "smartctl -H /dev/sda"
+      register: output
+    - debug: msg={{output.stdout_lines | join('\n')}}
