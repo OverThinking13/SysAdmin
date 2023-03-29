@@ -2,9 +2,9 @@
 tar -xvf /usr/local/bin/install.tar.gz -C /usr/local/bin/
 clear
 
-echo "deb ftp://dc1.uszn-chuna.local/voronezh/main 1.7_x86-64 main contrib non-free" > /etc/apt/sources.list
-echo "deb ftp://dc1.uszn-chuna.local/voronezh/base 1.7_x86-64 main contrib non-free" >> /etc/apt/sources.list
-echo "deb ftp://dc1.uszn-chuna.local/voronezh/update 1.7_x86-64 main contrib non-free" >> /etc/apt/sources.list
+echo "deb ftp://dc1.uszson-chuna.lan/voronezh/main 1.7_x86-64 main contrib non-free" > /etc/apt/sources.list
+echo "deb ftp://dc1.uszson-chuna.lan/voronezh/base 1.7_x86-64 main contrib non-free" >> /etc/apt/sources.list
+echo "deb ftp://dc1.uszson-chuna.lan/voronezh/update 1.7_x86-64 main contrib non-free" >> /etc/apt/sources.list
 
 
 echo "Updating system, please wait..."
@@ -25,10 +25,11 @@ sleep 5
 apt -y install lm-sensors &>> install.log
 sleep 5
 
-#apt -y install amd64-microcode &>> install.log
+apt -y install rsync &>> install.log
 sleep 5
 
 apt -y install xrdp &>> install.log
+
 mv /usr/local/bin/chrony.conf /etc/chrony/chrony.conf
 sleep 5
 
@@ -42,12 +43,12 @@ apt -y install smartmontools &>> install.log
 sleep 5
 
 
-mkdir -p /etc/r7-office/license/ -v &>> install.log
+mkdir -p /etc/r7-office/license/ -v &>> install.log 
 mv /usr/local/bin/license.lickey /etc/r7-office/license/license.lickey -v &>> install.log
 chmod 777 /etc/r7-office/license/license.lickey -v &>> install.log
 
-KESL_EULA_AGREED=Yes
-KESL_PRIVACY_POLICY_AGREED=Yes
+KESL_EULA_AGREED=Yes  
+KESL_PRIVACY_POLICY_AGREED=Yes 
 
 
 cd /usr/local/bin/
@@ -69,14 +70,12 @@ echo "$FILEUSER:$FILEPASSWD" | chpasswd
 hostnamectl set-hostname $FILEPCNAME
 sleep 5
 
-mkdir -p /home/$FILEUSER/ -v &>> install.log
-
 chsh -s /bin/bash $FILESUER
 ####################################################################################
 
 mkdir /mnt/share -v &>> install.log
 
-mv pam_mount.conf.xml  /etc/security/ -v &>> install.log
+mv pam_mount.conf.xml  /etc/security/ -v &>> install.log 
 
 ####################################################################################
 rm -f /etc/hosts
@@ -107,12 +106,13 @@ sleep 5
 rm -f /etc/systemd/system/multi-user.target.wants/update.service
 systemctl daemon-reload
 
-mv install.log /home/$FILEUSER/ -v &>> install.log
-rm -f /usr/local/bin/*
-mv /usr/local/bin/{.*,*} /home/$FILEUSER/ -v &>> install.log
+rsync -va --delete-after /usr/local/bin/skel/ /etc/skel/ &>> install.log
 
-####################################################################################
-chown -R $FILEUSER:$FILEUSER /home/$FILEUSER -v &>> /home/$FILEUSER/install.log
+mv /usr/local/bin/install.log /home/
+
+rm -Rf /usr/local/bin/*
+
+ 
 ####################################################################################
 
 reboot
