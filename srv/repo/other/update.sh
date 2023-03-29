@@ -63,7 +63,7 @@ while read a b c; do
     FILEPCNAME=$c
 done < '/usr/local/bin/user'
 
-useradd -m $FILEUSER
+adduser $FILEUSER --disabled-password --quiet --gecos ""
 usermod -aG video,users,plugdev,libvirt-qemu,libvirt,kvm,floppy,cdrom,dialout,audio,lpadmin $FILEUSER
 echo "$FILEUSER:$FILEPASSWD" | chpasswd
 
