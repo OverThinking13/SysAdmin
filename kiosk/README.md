@@ -3,3 +3,5 @@ https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-ne
 openssh
 
 system utilites
+
+sudo ./install.sh
