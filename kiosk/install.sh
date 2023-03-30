@@ -10,6 +10,19 @@ apt install -f -y ./*.deb
 
 useradd -m -g users kiosk
 
+sed 's/<!-- Keybindings for desktop switching -->/\
+<!-- Keybindings for desktop switching -->\
+<keybind key="F12">\
+      <action name="Execute">\
+        <command>\/sbin\/shutdown -h now<\/command>\
+      <\/action>\
+    <\/keybind>\
+/' /etc/xdg/openbox/rc.xml > rc.xml
+
+mkdir -p /home/kiosk/.config/openbox/
+mv rc.xml /home/kiosk/.config/openbox/rc.xml
+chown -R kiosk:users /home/kiosk/{*,.*}
+
 mkdir -p /etc/systemd/system/getty@tty1.service.d/
 
 cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << EOF
@@ -64,20 +77,6 @@ xset s noblank
 numlockx on
 ./chromium-gost.sh
 EOF
-
-sed 's/<!-- Keybindings for desktop switching -->/\
-<!-- Keybindings for desktop switching -->\
-<keybind key="F12">\
-      <action name="Execute">\
-        <command>\/sbin\/shutdown -h now<\/command>\
-      <\/action>\
-    <\/keybind>\
-/' /etc/xdg/openbox/rc.xml > rc.xml
-
-mkdir -p /home/kiosk/.config/openbox/
-mv rc.xml /home/kiosk/.config/openbox/rc.xml
-
-chown -R kiosk:users /home/kiosk/{*,.*}
 
 sudo chmod u+s /sbin/shutdown
 
