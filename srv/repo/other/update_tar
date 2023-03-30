@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /srv/repo/other
 rm install.tar.gz
-rm /srv/repo/other/Desktops/Desktop1/*.html
-cp /srv/samba/public/99_Soft/ink/linux/* /srv/repo/other/Desktops/Desktop1/
+rm /srv/repo/other/skel/Desktop/*.html
+cp /srv/samba/public/99_Soft/ink/linux/* /srv/repo/other/skel/Desktop/
 tar cfvz install.tar.gz --exclude update_tar --exclude update.sh --exclude update.service --exclude user .
