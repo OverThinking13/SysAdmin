@@ -32,7 +32,7 @@ ExecStart=-/sbin/agetty -a kiosk --noclear %I $TERM
 EOF
 
 cat >> /home/kiosk/.profile <<EOF
-if [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
+if [ -z "\$DISPLAY" ] && [ \$(tty) = /dev/tty1 ]; then
 . startx
 logout
 fi
