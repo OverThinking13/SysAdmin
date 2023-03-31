@@ -72,6 +72,7 @@ EOF
 chmod +x /home/kiosk/chromium-gost.sh
 
 cat >> /etc/xdg/openbox/autostart <<EOF
+xset -dpms
 xset s off
 xset s noblank
 numlockx on
