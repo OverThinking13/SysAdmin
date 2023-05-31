@@ -55,7 +55,7 @@ sleep 5
 
 mkdir /mnt/share -v &>> install.log
 
-mv pam_mount.conf.xml  /etc/security/ -v &>> install.log 
+mv /usr/local/bin/pam_mount.conf.xml  /etc/security/ -v &>> install.log 
 
 ####################################################################################
 
@@ -67,6 +67,7 @@ while read a b c; do
     FILEPCNAME=$c
 done < '/usr/local/bin/user'
 ###################################################################################
+
 
 #add hostname
 ###################################################################################
@@ -86,6 +87,8 @@ ff02::2 ip6-allrouters
 "> /etc/hosts
 ####################################################################################
 
+
+
 #r7-office
 ###################################################################################
 mkdir -p /etc/r7-office/license/ -v &>> install.log 
@@ -104,6 +107,7 @@ apt -y install ./*.deb --fix-broken &>> install.log
 sleep 5
 ###################################################################################
 
+
 #kes postinstall
 #####################################################################################
 /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=/usr/local/bin/kesl.ini &>> install.log
@@ -120,11 +124,13 @@ sleep 5
 #####################################################################################
 #2 freeipa
 #####################################################################################
-apt -y install fly-admin-freeipa-client &>> install.log
-sleep 5
+#apt -y install fly-admin-freeipa-client &>> install.log
+#sleep 5
 
-astra-freeipa-client -d uszson-chuna.lan -p temppassword -y &>> install.log
+#astra-freeipa-client -d uszson-chuna.lan -p temppassword -y &>> install.log
 ####################################################################################
+
+
 
 apt -y install -f &>> install.log
 sleep 5
