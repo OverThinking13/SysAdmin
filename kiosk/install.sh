@@ -2,6 +2,8 @@
 
 apt-get update
 
+apt-get upgrade
+
 apt install -y xorg openbox numlockx
 
 wget https://github.com/deemru/Chromium-Gost/releases/download/111.0.5563.147/chromium-gost-111.0.5563.147-linux-amd64.deb
