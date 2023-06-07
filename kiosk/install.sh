@@ -62,7 +62,9 @@ do
     --disable-pinch \
     --overscroll-history-navigation=disabled \
     --disable-features=TouchpadOverscrollHistoryNavigation\
-    'https://www.gosuslugi.ru/'
+    'https://www.gosuslugi.ru/'\
+     'https://www.gosuslugi.ru/'\
+     'https://account.mail.ru'\
 done
 EOF
 
