@@ -38,7 +38,7 @@ logout
 fi
 EOF
 
-cat > /home/kiosk/chromium-gost.sh <<EOF
+cat > /home/kiosk/.config/chromium-gost.sh <<EOF
 #!/bin/bash
 
 while true
@@ -49,20 +49,21 @@ sleep 5
 else
 /usr/bin/chromium-gost --disable-infobars --incognito --no-first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble\
 --noerrdialogs --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null --password-store=basic --disable-pinch\
---overscroll-history-navigation=disabled --disable-features=TouchpadOverscrollHistoryNavigation    'https://www.gosuslugi.ru'  'https://account.mail.ru'
+--overscroll-history-navigation=disabled --disable-features=TouchpadOverscrollHistoryNavigation    'https://www.gosuslugi.ru'  'https://account.mail.ru' 'https://gmail.com'
+rm -Rf *
 sleep 5
 fi
 done
 EOF
 
-chmod +x /home/kiosk/chromium-gost.sh
+chmod +x /home/kiosk/.config/chromium-gost.sh
 
 cat >> /etc/xdg/openbox/autostart <<EOF
 xset -dpms &
 xset s off &
 xset s noblank &
 numlockx on &
-./chromium-gost.sh &
+.config/chromium-gost.sh &
 EOF
 
 sudo chmod u+s /sbin/shutdown
@@ -70,9 +71,7 @@ sudo chmod u+s /sbin/shutdown
 sed  's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub > grub
 mv grub /etc/default/grub
 
-
-mkdir /etc/chromium/policies
-mkdir /etc/chromium/policies/managed
+mkdir -p /etc/chromium/policies/managed
 mkdir /etc/chromium/policies/recommended
 
 cat >> /etc/chromium/policies/managed/URLBlocklist.json <<EOF
@@ -83,7 +82,7 @@ EOF
 
 cat >> /etc/chromium/policies/managed/URLAllowlist.json <<EOF
 {
-    "URLAllowlist": ["gosuslugi.ru", "account.mail.ru","auth.mail.ru","e.mail.ru", "mail.yandex.ru","360.yandex.ru","passport.yandex.ru","gmail.com","mail.google.com","accounts.google.com"]
+    "URLAllowlist": ["gosuslugi.ru", "account.mail.ru","auth.mail.ru","e.mail.ru", "mail.yandex.ru","360.yandex.ru","passport.yandex.ru","gmail.com","mail.google.com","accounts.google.com","accounts.google.ru"]
 }
 EOF
 
