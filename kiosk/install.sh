@@ -88,13 +88,13 @@ mkdir /opt/chromium-gost/policies
 mkdir /opt/chromium-gost/policies/managed
 mkdir /opt/chromium-gost/policies/recommended
 
-cat >> /etc/chromium/policies/recommended/URLBlocklist.json <<EOF
+cat >> /opt/chromium-gost/policies/managed/URLBlocklist.json <<EOF
 {
   "URLBlocklist": ["*"]
 }
 EOF
 
-cat >> /etc/chromium/policies/managed/URLAllowlist.json <<EOF
+cat >> /opt/chromium-gost/policies/managed/URLAllowlist.json <<EOF
 {
     "URLAllowlist": ["gosuslugi.ru", "account.mail.ru","auth.mail.ru","e.mail.ru", "mail.yandex.ru","360.yandex.ru","passport.yandex.ru","gmail.com","mail.google.com","accounts.google.com"]
 }
