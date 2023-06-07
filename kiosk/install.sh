@@ -62,8 +62,7 @@ do
     --disable-pinch \
     --overscroll-history-navigation=disabled \
     --disable-features=TouchpadOverscrollHistoryNavigation\
-    'https://www.gosuslugi.ru/'\
-    sleep 30s
+    'https://www.gosuslugi.ru/'
 done
 EOF
 
