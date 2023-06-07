@@ -40,31 +40,18 @@ EOF
 
 cat > /home/kiosk/chromium-gost.sh <<EOF
 #!/bin/bash
+
 while true
-do
-/usr/bin/chromium-gost --disable-infobars \
-    --incognito\
-    --no-first-run\
-    --disable\
-    --disable-translate\
-    --disable-infobars\
-    --disable-suggestions-service\
-    --disable-save-password-bubble\
-    --start-maximized\
-    --noerrdialogs\
-    --no-first-run\
-    --fast\
-    --fast-start \
-    --disable-infobars \
-    --disable-features=TranslateUI\
-    --disk-cache-dir=/dev/null\
-    --password-store=basic\
-    --disable-pinch \
-    --overscroll-history-navigation=disabled \
-    --disable-features=TouchpadOverscrollHistoryNavigation\
-    'https://www.gosuslugi.ru/'\
-     'https://www.gosuslugi.ru/'\
-     'https://account.mail.ru'\
+ do
+if [ $(pgrep chrome -c) != "0" ]
+then
+sleep 5
+else
+/usr/bin/chromium-gost --disable-infobars --incognito --no-first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble\
+--noerrdialogs --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null --password-store=basic --disable-pinch\
+--overscroll-history-navigation=disabled --disable-features=TouchpadOverscrollHistoryNavigation    'https://www.gosuslugi.ru'  'https://account.mail.ru'
+sleep 5
+fi
 done
 EOF
 
@@ -84,17 +71,17 @@ sed  's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub > grub
 mv grub /etc/default/grub
 
 
-mkdir /opt/chromium-gost/policies
-mkdir /opt/chromium-gost/policies/managed
-mkdir /opt/chromium-gost/policies/recommended
+mkdir /etc/chromium/policies
+mkdir /etc/chromium/policies/managed
+mkdir /etc/chromium/policies/recommended
 
-cat >> /opt/chromium-gost/policies/managed/URLBlocklist.json <<EOF
+cat >> /etc/chromium/policies/managed/URLBlocklist.json <<EOF
 {
   "URLBlocklist": ["*"]
 }
 EOF
 
-cat >> /opt/chromium-gost/policies/managed/URLAllowlist.json <<EOF
+cat >> /etc/chromium/policies/managed/URLAllowlist.json <<EOF
 {
     "URLAllowlist": ["gosuslugi.ru", "account.mail.ru","auth.mail.ru","e.mail.ru", "mail.yandex.ru","360.yandex.ru","passport.yandex.ru","gmail.com","mail.google.com","accounts.google.com"]
 }
