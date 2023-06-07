@@ -44,7 +44,6 @@ while true
 do
 /usr/bin/chromium-gost --disable-infobars \
     --incognito\
-    --kiosk\
     --no-first-run\
     --disable\
     --disable-translate\
@@ -52,7 +51,6 @@ do
     --disable-suggestions-service\
     --disable-save-password-bubble\
     --start-maximized\
-    --start-fullscreen\
     --noerrdialogs\
     --no-first-run\
     --fast\
