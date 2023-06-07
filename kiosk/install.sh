@@ -87,6 +87,11 @@ cat >> /etc/chromium/policies/managed/URLAllowlist.json <<EOF
 }
 EOF
 
+cat >> /etc/chromium/policies/managed/ForcedLanguages.json <<EOF
+{
+  "ForcedLanguages": ["ru-RU"]
+}
+EOF
 
 update-grub
 
