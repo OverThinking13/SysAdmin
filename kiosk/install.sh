@@ -85,9 +85,9 @@ sed  's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub > grub
 mv grub /etc/default/grub
 
 
-mkdir /etc/chromium/policies
-mkdir /etc/chromium/policies/managed
-mkdir /etc/chromium/policies/recommended
+mkdir /opt/chromium-gost/policies
+mkdir /opt/chromium-gost/policies/managed
+mkdir /opt/chromium-gost/policies/recommended
 
 cat >> /etc/chromium/policies/recommended/URLBlocklist.json <<EOF
 {
