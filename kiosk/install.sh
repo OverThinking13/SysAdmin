@@ -65,6 +65,7 @@ xset -dpms &
 xset s off &
 xset s noblank &
 numlockx on &
+setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle" &
 .config/chromium-gost.sh &
 EOF
 
