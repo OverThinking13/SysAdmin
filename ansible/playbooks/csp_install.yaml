@@ -3,11 +3,11 @@
   become: yes
   tasks:
     - name: CSP
-      shell: /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/linux-amd64_deb/install.sh kc1 lsb-cprocsp-kc1 cprocsp-rdr-gui-gtk cprocsp-rdr-pcsc cprocsp-rdr-emv cprocsp-rdr-inpaspot cprocsp-r>
+      shell: /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/linux-amd64_deb/install.sh kc1 lsb-cprocsp-kc1 cprocsp-rdr-gui-gtk cprocsp-rdr-pcsc cprocsp-rdr-emv cprocsp-rdr-inpaspot cprocsp-rdr-mskey cprocsp-rdr-novacard cprocsp-rdr-rutoken cprocsp-cpopenssl-base cprocsp-cpopenssl cprocsp-cpopenssl-gost cprocsp-stunnel lsb-cprocsp-pkcs11
     - name: 1
       shell: apt -y install libccid pcscd libgost-astra
     - name: 2
-      shell: ln -s /etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json /etc/chromium/native-messaging-hosts warn: false
+      shell: ln -s /etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json /etc/chromium/native-messaging-hosts
     - name: 3
       shell: dpkg -i /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/cades-linux-amd64/cprocsp-pki-cades-64_2.0.14660-1_amd64.deb
     - name: 4
@@ -15,10 +15,14 @@
     - name: 5
       shell:  dpkg -i /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/IFCPlugin-x86_64.deb
     - name: 6
-      shell: rm /etc/ifc.cfg warn: false
+      shell: rm /etc/ifc.cfg
     - name: 7
       shell: cp /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/ifcx64.cfg /etc/ifc.cfg
     - name: 8
-      shell: touch /var/log/ifc/engine_logs/engine.log warn: false
+      shell: touch /var/log/ifc/engine_logs/engine.log 
     - name: 9
-      shell: chmod 777 /var/log/ifc/engine_logs/engine.log warn: false
+      shell: chmod 777 /var/log/ifc/engine_logs/engine.log 
+    - name: 10
+      shell: /opt/cprocsp/bin/amd64/certmgr -inst -store mRoot -file /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/Sertifikat-udostoveryayushchego-tsentra-Federalnogo-kaznacheystva-2023.CER
+    - name: 11
+      shell: /opt/cprocsp/bin/amd64/certmgr -inst -store mRoot -file /mnt/share/99_Soft/Sredstvo_kriptograficheskoj_zashhity_informacii_KriptoPro_CSP_40_9963_KS2/Kornevoy-sertifikat-GUTS-2022.cer
