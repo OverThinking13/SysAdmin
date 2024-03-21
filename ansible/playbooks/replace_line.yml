@@ -1,0 +1,10 @@
+- name: Replace Line
+  hosts: all
+  become: yes
+  tasks:
+  - name: hostname was used instead of path.
+    replace:
+      path: /etc/cups/cupsd.conf
+      regexp: 'BrowseLocalProtocols dnssd'
+      replace: 'BrowseLocalProtocols none'
+      backup: yes
