@@ -1,0 +1,11 @@
+- name: Temp command
+  hosts: all
+  become: yes
+  tasks:
+    - name: Powermng
+      shell: |
+        for i in $(ls -d /home/*/); do
+           sed -i 's/ScreenSaverDelay=[0-9]*/ScreenSaverDelay=1800/' "$i".fly/theme/current.themerc
+        done
+      args:
+        executable: /bin/bash
