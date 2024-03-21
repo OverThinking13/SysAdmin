@@ -1,0 +1,9 @@
+- name: Check free space
+  hosts: all
+  become: yes
+  tasks:
+          - name: Disk usage from command module
+            ansible.builtin.command: df -h /
+            register: space
+          - ansible.builtin.debug:
+                  var: space.stdout_lines
