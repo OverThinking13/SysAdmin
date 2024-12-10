@@ -66,7 +66,6 @@ EOF
 chmod +x /home/kiosk/.config/chromium-gost.sh
 
 cat >> /etc/xdg/openbox/autostart <<EOF
-sleep 10
 xset -dpms &
 xset s off &
 xset s noblank &
