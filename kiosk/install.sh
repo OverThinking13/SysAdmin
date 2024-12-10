@@ -6,7 +6,7 @@ apt-get upgrade
 
 apt install -y xorg openbox numlockx
 
-wget https://github.com/deemru/Chromium-Gost/releases/download/111.0.5563.147/chromium-gost-111.0.5563.147-linux-amd64.deb
+wget https://github.com/deemru/Chromium-Gost/releases/download/131.0.6778.108/chromium-gost-131.0.6778.108-linux-amd64.deb
 
 apt install -f -y ./*.deb
 
@@ -110,6 +110,9 @@ cat >> /etc/chromium/policies/managed/ForcedLanguages.json <<EOF
   "ForcedLanguages": ["ru-RU"]
 }
 EOF
+
+apt install wireplumber pipewire-media-session-
+
 
 update-grub
 
