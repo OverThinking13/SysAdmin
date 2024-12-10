@@ -34,6 +34,8 @@ ExecStart=-/sbin/agetty -a kiosk --noclear %I $TERM
 EOF
 
 cat >> /home/kiosk/.profile <<EOF
+LANGUAGE=ru_RU:ru
+LANG=ru_RU.UTF-8
 if [ -z "\$DISPLAY" ] && [ \$(tty) = /dev/tty1 ]; then
 . startx
 logout
@@ -61,6 +63,7 @@ EOF
 chmod +x /home/kiosk/.config/chromium-gost.sh
 
 cat >> /etc/xdg/openbox/autostart <<EOF
+sleep 10
 xset -dpms &
 xset s off &
 xset s noblank &
@@ -85,7 +88,17 @@ EOF
 
 cat >> /etc/chromium/policies/managed/URLAllowlist.json <<EOF
 {
-    "URLAllowlist": ["gosuslugi.ru", "account.mail.ru","auth.mail.ru","e.mail.ru", "mail.yandex.ru","360.yandex.ru","passport.yandex.ru","gmail.com","mail.google.com","accounts.google.com","accounts.google.ru"]
+    "URLAllowlist": [
+"gosuslugi.ru",
+"mail.ru",
+"yandex.ru",
+"gmail.com",
+"google.com",
+"google.ru",
+"profczn.ru",
+"trudvsem.ru",
+"print"
+]
 }
 EOF
 
