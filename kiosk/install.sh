@@ -47,13 +47,16 @@ cat > /home/kiosk/.config/chromium-gost.sh <<EOF
 
 while true
  do
-if [ $(pgrep chrome -c) != "0" ]
+if [ 0 != "0" ]
 then
 sleep 5
 else
-/usr/bin/chromium-gost --disable-infobars --incognito --no-first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble\
---noerrdialogs --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null --password-store=basic --disable-pinch\
---overscroll-history-navigation=disabled --disable-features=TouchpadOverscrollHistoryNavigation    'https://www.gosuslugi.ru'  'https://account.mail.ru' 'https://gmail.com'
+/usr/bin/chromium-gost --disable-infobars --incognito --start-maximized --no-first-run --disable-translate --disable-infobars \
+--disable-suggestions-service --disable-save-password-bubble --noerrdialogs --fast-start --disable-features=TranslateUI \
+--disk-cache-dir=/dev/null --password-store=basic --disable-pinch--overscroll-history-navigation=disabled \
+--disable-features=TouchpadOverscrollHistoryNavigation --lang=ru_RU --accept-lang=ru_RU,en_US\
+'https://www.gosuslugi.ru' 'https://trudvsem.ru' 'https://account.mail.ru' 'https://gmail.com' \
+'https://forms.yandex.ru/u/671f456673cee711b69a14d4' 'https://new.profczn.ru/167679?id=2242337' 'https://new.profczn.ru/167682?id=2242337'
 rm -Rf *
 sleep 5
 fi
