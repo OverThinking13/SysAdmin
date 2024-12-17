@@ -1,0 +1,18 @@
+$ORIGIN .
+$TTL 604800	; 1 week
+88.168.192.in-addr.arpa	IN SOA	dc1.kcio-chuna.lan. admin.kcio-chuna.lan. (
+				5          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	dc1.kcio-chuna.lan.
+$ORIGIN 88.168.192.in-addr.arpa.
+$TTL 3600	; 1 hour
+123			PTR	DESKTOP-V830DSF.kcio-chuna.lan.
+128			PTR	Pixel-7a.kcio-chuna.lan.
+$TTL 604800	; 1 week
+200			PTR	srv-36.kcio-chuna.lan.
+250			PTR	dc1.kcio-chuna.lan.
+dc1			A	192.168.88.250
