@@ -1,0 +1,27 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+server ::/0 {
+ bogus yes;
+};
+
+zone "kcio-chuna.lan" IN {
+	type master;
+	file "/var/lib/bind/kcio-chuna.lan.hosts";
+	allow-update { key rndc-key; };
+	};
+
+zone "88.168.192.in-addr.arpa" IN {
+	type master;
+	file "/var/lib/bind/88.168.192.rev";
+	allow-update { key rndc-key; };
+	};
+zone "delo-web.govirk.ru" {
+	type master;
+	file "/var/lib/bind/delo-web.govirk.ru.hosts";
+	};
