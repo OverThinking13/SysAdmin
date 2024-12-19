@@ -1,7 +1,7 @@
 $ORIGIN .
 $TTL 604800	; 1 week
 kcio-chuna.lan		IN SOA	dc1.kcio-chuna.lan. admin.kcio-chuna.lan. (
-				5          ; serial
+				53         ; serial
 				604800     ; refresh (1 week)
 				86400      ; retry (1 day)
 				2419200    ; expire (4 weeks)
@@ -9,4 +9,5 @@ kcio-chuna.lan		IN SOA	dc1.kcio-chuna.lan. admin.kcio-chuna.lan. (
 				)
 			NS	dc1.kcio-chuna.lan.
 $ORIGIN kcio-chuna.lan.
+_ntp._udp		SRV	0 100 123 dc1
 dc1			A	192.168.88.250
