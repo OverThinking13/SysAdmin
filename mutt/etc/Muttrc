@@ -1,0 +1,4 @@
+set realname = "server"
+set from = "*****@mail.ru"
+set smtp_url = "smtp://******@smtp.mail.ru:587/"
+set smtp_pass = "Bim3mc9XnBwfZ8wtgWuP"
